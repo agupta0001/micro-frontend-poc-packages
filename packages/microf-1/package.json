@@ -1,7 +1,8 @@
 {
-  "name": "microf-1",
+  "name": "microf_1",
   "version": "1.0.0",
   "scripts": {
+    "build": "webpack --mode production",
     "dev": "webpack serve --open --mode development"
   },
   "devDependencies": {

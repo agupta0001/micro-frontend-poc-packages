@@ -13,10 +13,12 @@ module.exports = (_, args) => {
 
   const productionPlugins = [
     new ModuleFederationPlugin({
-      name: "microf-1",
-      filename: "microf-1.js",
-      expose: {
+      name: "microf_1",
+      filename: "microf_1.js",
+      exposes: {
         "./App": "./src/App",
+        "./Test1": "./src/components/Test1",
+        "./Test2": "./src/components/Test2",
       },
       shared: {
         ...deps,
@@ -34,8 +36,8 @@ module.exports = (_, args) => {
 
   return {
     output: {
-      filename: `[name].js`,
-      publicPath: `http://localhost:${port}/`,
+      filename: isProduction ? `[name].[contenthash].js` : `[name].js`,
+      publicPath: `/microf_1`,
     },
 
     resolve: {
