@@ -1,15 +1,13 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
-const { resolve } = require("path");
 
 const deps = require("./package.json").dependencies;
 
 module.exports = (_, args) => {
   const isProduction = args.mode == "production" ? true : false;
 
-  const port = args.port ?? 3000;
+  const port = args.port ?? 3001;
 
   const productionPlugins = [
     new ModuleFederationPlugin({
@@ -37,7 +35,7 @@ module.exports = (_, args) => {
   return {
     output: {
       filename: isProduction ? `[name].[contenthash].js` : `[name].js`,
-      publicPath: `/microf_1`,
+      publicPath: `https://raw.githubusercontent.com/agupta0001/micro-frontend-poc-packages/main/packages/microf-1/dist/`,
     },
 
     resolve: {
