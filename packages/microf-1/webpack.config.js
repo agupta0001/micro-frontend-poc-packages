@@ -1,8 +1,16 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const webpack = require("webpack");
+const path = require("path");
 
-const deps = require("./package.json").dependencies;
+const {
+  dependencies: deps,
+  devDependencies: devDeps,
+} = require("./package.json");
+
+console.log({
+  deps: Object.keys(deps),
+});
 
 module.exports = (_, args) => {
   const isProduction = args.mode == "production" ? true : false;
@@ -34,8 +42,7 @@ module.exports = (_, args) => {
 
   return {
     output: {
-      filename: isProduction ? `[name].[contenthash].js` : `[name].js`,
-      publicPath: `https://raw.githubusercontent.com/agupta0001/micro-frontend-poc-packages/main/packages/microf-1/dist/`,
+      path: path.resolve("./dist"),
     },
 
     resolve: {

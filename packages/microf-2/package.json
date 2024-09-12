@@ -1,0 +1,8 @@
+{
+  "name": "microf-2",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --open --mode development"
+  }
+}
